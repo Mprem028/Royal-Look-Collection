@@ -1,0 +1,499 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Royal Look Collections</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f5f5f5;
+}
+
+/* NAVBAR */
+
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:black;
+color:white;
+padding:15px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header h1{
+color:#FFD700;
+}
+
+nav{
+display:flex;
+}
+
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:500;
+transition:.3s;
+}
+
+nav a:hover{
+color:#FFD700;
+}
+
+nav a.active{
+color:#FFD700;
+border-bottom:2px solid #FFD700;
+}
+
+/* MOBILE MENU */
+
+.menu-toggle{
+display:none;
+font-size:26px;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+nav{
+position:absolute;
+top:70px;
+right:0;
+background:black;
+width:200px;
+display:none;
+flex-direction:column;
+}
+
+nav a{
+padding:12px;
+display:block;
+}
+
+nav.active{
+display:flex;
+}
+
+.menu-toggle{
+display:block;
+}
+
+}
+
+/* HERO */
+
+.hero{
+height:80vh;
+background:url("https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&q=80") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
+
+.hero h2{
+font-size:48px;
+background:rgba(0,0,0,0.6);
+padding:20px;
+border-radius:8px;
+}
+
+/* SECTION */
+
+section{
+padding:60px 8%;
+scroll-margin-top:90px;
+}
+
+h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+/* CATEGORY */
+
+.categories{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.cat{
+background:white;
+padding:40px;
+text-align:center;
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:.3s;
+}
+
+.cat:hover{
+transform:translateY(-6px);
+}
+
+/* PRODUCTS */
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.product{
+background:white;
+border-radius:8px;
+overflow:hidden;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:.3s;
+}
+
+.product:hover{
+transform:translateY(-6px);
+}
+
+.product img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.product-info{
+padding:15px;
+}
+
+.price{
+color:#e91e63;
+font-weight:bold;
+}
+
+/* MAP */
+
+iframe{
+width:100%;
+height:400px;
+border:0;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* BUTTON */
+
+.direction-btn{
+margin-top:20px;
+padding:14px 30px;
+background:black;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+.direction-btn:hover{
+background:#FFD700;
+color:black;
+}
+
+/* CONTACT */
+
+.contact{
+text-align:center;
+}
+
+.contact button{
+padding:12px 30px;
+border:none;
+background:#25D366;
+color:white;
+font-size:16px;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+background:black;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+/* WHATSAPP FLOAT */
+
+.whatsapp-float{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#25D366;
+color:white;
+font-size:26px;
+width:55px;
+height:55px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+text-decoration:none;
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
+transition:.3s;
+z-index:1000;
+}
+
+.whatsapp-float:hover{
+transform:scale(1.1);
+}
+
+/* SCROLL ANIMATION */
+
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:all .7s ease;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Royal Look</h1>
+
+<div class="menu-toggle">☰</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#categories">Categories</a>
+<a href="#offers">Offers</a>
+<a href="#combo">Combo</a>
+<a href="#location">Location</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</header>
+
+
+<section class="hero fade" id="home">
+
+<div>
+<h2>Royal Look Collections</h2>
+<p style="margin-top:10px;">Premium Fashion Store – Rayalpad</p>
+</div>
+
+</section>
+
+
+<section id="categories" class="fade">
+
+<h2>Shop by Category</h2>
+
+<div class="categories">
+
+<div class="cat">Men's Wear</div>
+<div class="cat">Women's Wear</div>
+<div class="cat">Kids Wear</div>
+<div class="cat">Accessories</div>
+
+</div>
+
+</section>
+
+
+<section id="offers" class="fade">
+
+<h2>🔥 Special Offers</h2>
+
+<div class="products">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475">
+<div class="product-info">
+<h4>Men's Shirt Offer</h4>
+<p><del>₹999</del> <span class="price">₹699</span></p>
+</div>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
+<div class="product-info">
+<h4>Casual T-Shirt Offer</h4>
+<p><del>₹699</del> <span class="price">₹449</span></p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="combo" class="fade">
+
+<h2>🎁 Combo Offers</h2>
+
+<div class="products">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f">
+<div class="product-info">
+<h4>2 Shirts Combo</h4>
+<p><del>₹1999</del> <span class="price">₹1299</span></p>
+</div>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d">
+<div class="product-info">
+<h4>T-Shirt + Jeans Combo</h4>
+<p><del>₹2199</del> <span class="price">₹1499</span></p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="location" class="fade">
+
+<h2>📍 Our Location</h2>
+
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.0496461769553!2d78.34100150962122!3d13.532544786781896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb26d004f24b2b5%3A0x1826d328d73d1e12!2sRoyal%20look%20collection%20rayalpad!5e0!3m2!1sen!2sin!4v1773368954999!5m2!1sen!2sin"
+loading="lazy">
+</iframe>
+
+<div style="text-align:center">
+
+<a href="https://www.google.com/maps/dir/?api=1&destination=13.5325448,78.3410015" target="_blank">
+<button class="direction-btn">🧭 Get Directions</button>
+</a>
+
+</div>
+
+</section>
+
+
+<section id="contact" class="fade">
+
+<div class="contact">
+
+<h2>Contact Us</h2>
+
+<p>Visit our store at Rayalpad</p>
+
+<br>
+
+<button onclick="window.open('https://wa.me/91XXXXXXXXXX')">
+Chat on WhatsApp
+</button>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 Royal Look Collections – Rayalpad</p>
+
+</footer>
+
+
+<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
+💬
+</a>
+
+
+<script>
+
+/* MOBILE MENU */
+
+const menuToggle=document.querySelector(".menu-toggle");
+const nav=document.querySelector("nav");
+
+menuToggle.addEventListener("click",()=>{
+nav.classList.toggle("active");
+});
+
+
+/* ACTIVE MENU */
+
+const sections=document.querySelectorAll("section");
+const navLinks=document.querySelectorAll("nav a");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(section=>{
+
+const sectionTop=section.offsetTop-120;
+
+if(pageYOffset>=sectionTop){
+current=section.getAttribute("id");
+}
+
+});
+
+navLinks.forEach(link=>{
+
+link.classList.remove("active");
+
+if(link.getAttribute("href")==="#"+current){
+link.classList.add("active");
+}
+
+});
+
+});
+
+
+/* SCROLL ANIMATION */
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+document.querySelectorAll(".fade").forEach(section=>{
+observer.observe(section);
+});
+
+</script>
+
+</body>
+</html>
+```
