@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -153,37 +153,57 @@ transform:translateY(-6px);
 
 /* PRODUCTS */
 
+/* PRODUCTS */
+
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+max-width:1100px;
+margin:auto;
 }
 
 .product{
 background:white;
-border-radius:8px;
+border-radius:12px;
 overflow:hidden;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-transition:.3s;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
+transition:0.3s;
+max-width:320px;
+margin:auto;
 }
 
 .product:hover{
 transform:translateY(-6px);
 }
 
+/* PERFECT SQUARE IMAGE */
+
 .product img{
 width:100%;
-height:250px;
+aspect-ratio:1/1;
 object-fit:cover;
+display:block;
 }
 
 .product-info{
-padding:15px;
+padding:18px;
+text-align:left;
+}
+
+.product-info h4{
+font-size:18px;
+margin-bottom:8px;
+}
+
+.product-info p{
+font-size:16px;
 }
 
 .price{
 color:#e91e63;
-font-weight:bold;
+font-weight:600;
+margin-left:6px;
 }
 
 /* MAP */
@@ -333,25 +353,7 @@ transform:translateY(0);
 
 <h2>🔥 Special Offers</h2>
 
-<div class="products">
-
-<div class="product">
-<img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475">
-<div class="product-info">
-<h4>Men's Shirt Offer</h4>
-<p><del>₹999</del> <span class="price">₹699</span></p>
-</div>
-</div>
-
-<div class="product">
-<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
-<div class="product-info">
-<h4>Casual T-Shirt Offer</h4>
-<p><del>₹699</del> <span class="price">₹449</span></p>
-</div>
-</div>
-
-</div>
+<div class="products" id="offers-container"></div>
 
 </section>
 
@@ -360,25 +362,7 @@ transform:translateY(0);
 
 <h2>🎁 Combo Offers</h2>
 
-<div class="products">
-
-<div class="product">
-<img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f">
-<div class="product-info">
-<h4>2 Shirts Combo</h4>
-<p><del>₹1999</del> <span class="price">₹1299</span></p>
-</div>
-</div>
-
-<div class="product">
-<img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d">
-<div class="product-info">
-<h4>T-Shirt + Jeans Combo</h4>
-<p><del>₹2199</del> <span class="price">₹1499</span></p>
-</div>
-</div>
-
-</div>
+<div class="products" id="combo-container"></div>
 
 </section>
 
@@ -413,7 +397,7 @@ loading="lazy">
 
 <br>
 
-<a href="https://api.whatsapp.com/send?phone=919980160547" target="_blank">
+<a href="https://wa.me/919999999999" target="_blank">
 <button>Chat on WhatsApp</button>
 </a>
 
@@ -429,7 +413,7 @@ loading="lazy">
 </footer>
 
 
-<a href="https://wa.me/919980160547" class="whatsapp-float" target="_blank">
+<a href="https://wa.me/919999999999" class="whatsapp-float" target="_blank">
 💬
 </a>
 
@@ -492,13 +476,55 @@ document.querySelectorAll(".fade").forEach(section=>{
 observer.observe(section);
 });
 
+
+/* GOOGLE SHEETS DATA */
+
+const offersSheet="https://docs.google.com/spreadsheets/d/e/2PACX-1vTkXBo9uoYRvBw4v8288LeTSd52i-_xAyXz14Iu-Y1ufAXH04BksIdGdxcaH4OR7d7a8LvrP_70j-Xy/pub?output=csv";
+const comboSheet="https://docs.google.com/spreadsheets/d/e/2PACX-1vTkXBo9uoYRvBw4v8288LeTSd52i-_xAyXz14Iu-Y1ufAXH04BksIdGdxcaH4OR7d7a8LvrP_70j-Xy/pub?output=csv";
+
+
+function loadProducts(sheetURL,containerID){
+
+fetch(sheetURL)
+.then(res=>res.text())
+.then(data=>{
+
+const rows=data.split("\n").slice(1);
+
+const container=document.getElementById(containerID);
+
+container.innerHTML="";
+
+rows.forEach(row=>{
+
+const cols=row.split(",");
+
+if(cols.length>2){
+
+container.innerHTML+=`
+<div class="product">
+<img src="${cols[3]}" />
+<div class="product-info">
+<h4>${cols[0]}</h4>
+<p><del>₹${cols[1]}</del> <span class="price">₹${cols[2]}</span></p>
+</div>
+</div>
+`;
+
+}
+
+});
+
+});
+
+}
+
+
+loadProducts(offersSheet,"offers-container");
+loadProducts(comboSheet,"combo-container");
+
 </script>
 
 </body>
 </html>
 ```
-
-
-
-
-
